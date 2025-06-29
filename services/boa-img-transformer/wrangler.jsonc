@@ -1,0 +1,37 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "boa-img-transformer",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-05-23",
+  "observability": {
+    "enabled": true
+  },
+  "dev": {
+    "port": 8788,
+    // TODO: not necessary if you are not using windows
+    "enable_containers": false
+  },
+  "containers": [
+    {
+      "class_name": "BoaImgTransformer",
+      "image": "./Dockerfile",
+      "max_instances": 1,
+      "name": "boa-img-transformer",
+      "instance_type": "basic"
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "BoaImgTransformer",
+        "name": "BOA_IMG_TRANSFORMER"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "new_sqlite_classes": ["BoaImgTransformer"],
+      "tag": "v1"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "@boxofapps/img-transformer",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/exports.ts",
+  "exports": {
+    ".": "./src/exports.ts",
+    "./src/*": "./src/*"
+  },
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "dev:container": "tsx watch container_src/server.ts",
+    "start": "wrangler dev",
+    "start:container": "tsx container_src/server.ts",
+    "cf-typegen": "wrangler types",
+    "test": "tsx test/testContainer.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.6",
+    "tsx": "^4.20.3",
+    "typescript": "^5.5.2",
+    "wrangler": "^4.22.0"
+  },
+  "dependencies": {
+    "@cloudflare/containers": "^0.0.13",
+    "@hono/node-server": "^1.14.4",
+    "hono": "^4.8.2",
+    "sharp": "^0.34.2",
+    "zod": "^3.25.67"
+  }
+}
